@@ -29,4 +29,7 @@ urlpatterns = [
 
     # Example: /today/
     path('today/', PostTAV.as_view(), name='post_today_archive'),
+
+    # Example: /search/
+    path('search/', SearchFormView.as_view(), name='search'),
 ]

@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+{% block title %}날짜별 포스트{% endblock%}
+{% block content %}
+<div id="content">
+
 <h1>Post Archives until {% now "N d, Y" %}</h1>
 
 <ul>
@@ -18,3 +23,5 @@
         {% endfor %}        
     </ul>
 </div>
+</div>
+{% endblock %}

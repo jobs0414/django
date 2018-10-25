@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+{% block title %}포스트 상세보기{% endblock%}
+{% block content %}
+<div id="content">
 <h2>{{ object.title }}</h2>
 
 <!-- previous or next post link -->
@@ -20,3 +24,5 @@
 <div class="body">
     {{ object.content|linebreaks }}
 </div>
+</div>
+{% endblock %}

@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>First Django Web App - Bookmark Detail</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title%}Bookmark Detail{% endblock %}
+{% block content %}
 <div id='content'>
     <h1>{{ object.title }}</h1>
     <h3>{{ object.url_category }}</h3>
 
     <a href='{{ object.url }}'>{{ object.url }}</a>
 </div>
-</body>
-</html>
+{% endblock %}

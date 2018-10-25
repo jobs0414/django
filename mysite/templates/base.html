@@ -14,10 +14,17 @@
 
 <div id="header">
     <h2 class="maintitle">Easy&amp;Fast Django Web Programming</h2>
-    <h4 class="welcome">Welcome, user /
-                <a href="#">Change Password</a> /
-                <a href="#">Logout</a>
-    </h4>
+    {% if user.is_active %}
+        <h4 class="welcome">Welcome, user /
+            <a href="{% url 'password_change' %}">Change Password</a> /
+            <a href="{% url 'logout' %}">Logout</a>
+        </h4>
+    {% else %}
+        <h4 class="welcome">
+            <a href="{% url 'login' %}">Login</a> /
+            <a href="{% url 'register' %}">Register</a>
+        </h4>
+    {% endif %}
 </div>
 
 <div id="menu">
@@ -42,7 +49,7 @@
     </li>
 
     <li><a href="{% url 'blog:post_archive' %}">Archive</a></li>
-    <li><a href="#">Search</a></li>
+    <li><a href="{% url 'blog:search' %}">Search</a></li>
     <li><a href="{% url 'admin:index' %}">Admin</a></li>
 </div>
 
