@@ -26,8 +26,8 @@ class BookmarkCreateView(LoginRequiredMixin, CreateView):
         return super(BookmarkCreateView, self).form_valid(form)
 
 class BookmarkChangeLV(LoginRequiredMixin, ListView):
-    tempalte_name = "bookmark/bookmark_change_list.html"
-
+    template_name = "bookmark/bookmark_change_list.html"
+    
     def get_queryset(self):
         return Bookmark.objects.filter(owner = self.request.user)
 

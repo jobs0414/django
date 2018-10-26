@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title%}Post Change List for User{% endblock %}
+{% block content %}
+<div id='content'>
+    <h1>Post Change - {{ user }}</h1>
+
+    <table class="change-list">
+        <tr>
+            <th>Title</th><th>Description</th>
+            <th>Owner</th><th>Update</th><th>Delete</th>
+        </tr>
+
+        {% for post in object_list %}
+        <tr>
+            <td>{{ post.title }}</td>
+            <td>{{ post.description }}</td>
+            <td>{{ post.owner }}</td>
+            <td><a href="{% url 'blog:update' post.id %}">Update</a></td>
+            <td><a href="{% url 'blog:delete' post.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}    

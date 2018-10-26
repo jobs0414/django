@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}전체 포스트{% endblock%}
+{% load staticfiles %}
 {% block content %}
 <div id="content">
     <h1>Blog List</h1>
@@ -14,15 +15,17 @@
     <br/>
 
     <!-- paging link -->
-    <div>
+    <div style="position:relative;height: 20px;">
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+            <a href="?page={{ page_obj.previous_page_number }}">
+                    <img src="{% static 'img/left.png' %}" style="position:relative;top:3px;width:18px; height:18px;"/></a>
         {% endif %}
 
         Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} 
 
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+            <a href="?page={{ page_obj.next_page_number }}">
+                    <img src="{% static 'img/right.png' %}" style="position:relative;top:3px;width:18px; height:18px;"/></a>
         {% endif %}
     </div>
 
