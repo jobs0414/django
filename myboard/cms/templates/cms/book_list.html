@@ -23,7 +23,7 @@
             <td>{{ book.publisher }}</td>
             <td>{{ book.price }}</td>
             <td>
-                <a href="" class="btn btn-outline-primary btn-sm">수정</a>
+                <a href="{% url 'cms:book_modify' book_id=book.id %}" class="btn btn-outline-primary btn-sm">수정</a>
                 <a href="" class="btn btn-outline-danger btn-sm">삭제</a>
                 <a href="" class="btn btn-outline-info btn-sm">감상평</a>
             </td>
