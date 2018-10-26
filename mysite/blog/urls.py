@@ -32,4 +32,9 @@ urlpatterns = [
 
     # Example: /search/
     path('search/', SearchFormView.as_view(), name='search'),
+
+    path('add/', PostCreateView.as_view(), name='add'),
+    path('change/', PostChangeLV.as_view(), name='change'),
+    path('update/<int:pk>/', PostUpdateView.as_view(), name='update'),
+    path('delete/<int:pk>/', PostDeleteView.as_view(), name='delete'),
 ]
