@@ -3,10 +3,7 @@ from django.http import HttpResponse
 
 from cms.models import Book, Impression
 from cms.forms import BookForm, ImpressionForm
-<<<<<<< HEAD
 from django.views.generic.list import ListView
-=======
->>>>>>> 9e3938c344be5380c54385b01dfa4f6a0a867132
 
 # Create your views here.
 def book_list(request):
@@ -41,7 +38,6 @@ def book_edit(request, book_id=None):
         return render(request, 'cms/book_edit.html', dict(form=form, book_id=book_id))
 
 def book_remove(request, book_id):
-<<<<<<< HEAD
     book = get_object_or_404(Book, pk=book_id)
     book.delete()
     return redirect('cms:book_list')
@@ -59,11 +55,26 @@ class ImpressionList(ListView):
         context = self.get_context_data(object_list=self.object_list, book=book)
         return self.render_to_response(context)
 
-def impression_edit(request, book_id, impress_id=None):    
-    return HttpResponse("감상평 수정/추가")
+def impression_edit(request, book_id, impression_id=None):
+    book = get_object_or_404(Book, pk=book_id)
+    if impression_id:
+        impression = get_object_or_404(Impression, pk=impression_id)
+    else:
+        impression = Impression()
 
-def impression_remove(request, book_id, impress_id):    
-    return HttpResponse("감상평 삭제")    
-=======
-    return HttpResponse('도서 삭제')
->>>>>>> 9e3938c344be5380c54385b01dfa4f6a0a867132
+    if request.method == 'POST':
+        form = ImpressionForm(request.POST, instance=impression)
+        if form.is_valid():
+            impression = form.save(commit=False)
+            impression.book = book
+            impression.save()
+            return redirect('cms:impression_list', book_id=book_id)
+    else: # GET
+        form = ImpressionForm(instance=impression)
+
+    return render(request, "cms/impression_edit.html", dict(form=form, book_id=book_id, impression_id=impression_id))
+
+def impression_remove(request, book_id, impression_id):
+    impression = get_object_or_404(Impression, pk=impression_id)
+    impression.delete()
+    return redirect('cms:impression_list', book_id=book_id)

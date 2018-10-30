@@ -24,13 +24,8 @@
             <td>{{ book.price }}</td>
             <td>
                 <a href="{% url 'cms:book_modify' book_id=book.id %}" class="btn btn-outline-primary btn-sm">수정</a>
-<<<<<<< HEAD
                 <a href="{% url 'cms:book_remove' book_id=book.id %}" class="btn btn-outline-danger btn-sm">삭제</a>
                 <a href="{% url 'cms:impression_list' book_id=book.id %}" class="btn btn-outline-info btn-sm">감상평</a>
-=======
-                <a href="" class="btn btn-outline-danger btn-sm">삭제</a>
-                <a href="" class="btn btn-outline-info btn-sm">감상평</a>
->>>>>>> 9e3938c344be5380c54385b01dfa4f6a0a867132
             </td>
         </tr>
         {% endfor %}
