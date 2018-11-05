@@ -1,0 +1,29 @@
+<form method="post" accept-charset="utf-8" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {% for field in form %}
+
+        <div class="form-field">
+        <label>{{ field.label }}</label>
+        {{ field }}
+
+        {% if field.help_text %}
+            <p>
+                <small style="color: grey">{{ field.help_text }}</small>
+            </p>
+        {% endif %}
+
+        {% if field.errors %}
+            {{ field.errors }}
+        {% endif %}
+
+    {% endfor %}
+
+    {% if user.profile.image %}
+        <img src="{{ request.user.profile.image_thumbnail.url }}"/>
+    {% endif %}
+        </div>
+    <div class="form-action">
+        <input class="btn-shadow btn-shadow-primary" type="submit" value="Sign up"/>
+    </div>
+</form>
